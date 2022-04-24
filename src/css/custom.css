@@ -11,8 +11,8 @@
   --ifm-color-primary-darker: #007957;
   --ifm-color-primary-darkest: #00573e;
   --ifm-color-primary-light: #5cd9b3;
-  --ifm-color-primary-lighter: #73dab4;
-  --ifm-color-primary-lightest: #8edcc0;
+  --ifm-color-primary-lighter: #96e0c5;
+  --ifm-color-primary-lightest: #ceffe5;
   --ifm-code-font-size: 95%;
 }
 
@@ -21,7 +21,7 @@
   --ifm-color-primary: #00C68A;
   --ifm-color-primary-dark: #00A473;
   --ifm-color-primary-darker: #007957;
-  --ifm-color-primary-darkest: #00573e;
+  --ifm-color-primary-darkest: #004431;
   --ifm-color-primary-light: #5cd9b3;
   --ifm-color-primary-lighter: #73dab4;
   --ifm-color-primary-lightest: #8edcc0;
@@ -36,4 +36,83 @@
 
 [data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
+}
+
+.table-of-contents {
+  padding-left: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.table-of-contents>li {
+  margin-left: -2px;
+}
+
+.table-of-contents>li>ul>li>a {
+  margin-left: calc(-2 * var(--ifm-toc-padding-horizontal));
+  padding-left: calc(3 * var(--ifm-toc-padding-horizontal));
+  margin-right: calc(-1 * var(--ifm-toc-padding-horizontal))
+}
+
+.table-of-contents__left-border {
+  border-left: 2px solid var(--ifm-toc-border-color);
+}
+
+.table-of-contents__link {
+  padding: var(--ifm-toc-padding-horizontal);
+  padding-left: calc(var(--ifm-toc-padding-horizontal) + 2px);
+}
+
+[data-theme="dark"] .table-of-contents__link {
+  color: var(--ifm-color-gray-500);
+}
+
+.table-of-contents__link:hover {
+  color: black;
+}
+
+[data-theme="dark"] .table-of-contents__link:hover {
+  color: white;
+}
+
+[data-theme="dark"] .table-of-contents__link--active {
+  background: var(--ifm-color-primary-darkest);
+  color: white;
+}
+
+.table-of-contents__link--active {
+  font-weight: bold;
+  padding-left: var(--ifm-toc-padding-horizontal);
+  border-left: 2px solid var(--ifm-color-primary);
+  color: var(--ifm-text-primary);
+  background: var(--ifm-color-primary-lightest);
+}
+
+.theme-doc-sidebar-container {
+  border: none !important;
+}
+
+.menu__list .menu__list-item .menu__link:hover {
+  background: inherit;
+  color: var(--ifm-color-primary);
+}
+
+.menu__list .menu__list-item .menu__link--active {
+  background: inherit;
+}
+
+.menu__link--active {
+  font-weight: bold;
+  color: var(--ifm-color-primary);
+  background: inherit;
+}
+
+@media (min-width: 997px) {
+  main {
+    max-width: var(--ifm-container-width-xl) !important;
+  }
+
+  .main-wrapper > div {
+    justify-content: center;
+  }
 }

@@ -54,8 +54,8 @@ const config = {
           {
             type: 'doc',
             docId: 'intro',
-            position: 'left',
-            label: 'Tutorial',
+            position: 'right',
+            label: 'Documentation',
           },
           {
             href: 'https://github.com/Ratsch0k/group-car-docs',
@@ -65,7 +65,6 @@ const config = {
         ],
       },
       footer: {
-        style: 'dark',
         links: [
           {
             title: 'Docs',
@@ -128,7 +127,7 @@ const config = {
             ]
           }
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Simon Kurz, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,

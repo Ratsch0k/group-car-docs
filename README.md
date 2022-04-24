@@ -1,4 +1,11 @@
-# Website
+# Group Car Docs
+Source of the documentation website for the project **Group Car**
+
+Links:
+ - Website: https://my-group-car.de
+ - Repositories:
+   - Frontend: https://github.com/Ratsch0k/group-car
+   - Backend: https://github.com/Ratsch0k/group-car-api
 
 This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 

@@ -6,25 +6,42 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-color-primary: #00C68A;
+  --ifm-color-primary-dark: #00A473;
+  --ifm-color-primary-darker: #007957;
+  --ifm-color-primary-darkest: #00573e;
+  --ifm-color-primary-light: #5cd9b3;
+  --ifm-color-primary-lighter: #96e0c5;
+  --ifm-color-primary-lightest: #ceffe5;
+  --ifm-color-secondary: #AD00D8;
+  --ifm-color-secondary-light: #ECA1FF;
+  --ifm-color-secondary-lighter: #eeb1ff;
+  --ifm-color-secondary-lightest: #efc6ff;
+  --ifm-color-secondary-dark: #8900AB;
+  --ifm-color-secondary-darker: #74008d;
+  --ifm-color-secondary-darkest: #4d0062;
   --ifm-code-font-size: 95%;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* For readability conscerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
+  --ifm-color-primary: #03de9b;
+  --ifm-color-primary-dark: #00A473;
+  --ifm-color-primary-darker: #007957;
+  --ifm-color-primary-darkest: #004634;
+  --ifm-color-primary-light: #5cd9b3;
+  --ifm-color-primary-lighter: #73dab4;
+  --ifm-color-primary-lightest: #8edcc0;
+  --ifm-background-color: #001f1b !important;
+  --ifm-navbar-background-color: #001f1b;
+  --ifm-footer-background-color: #001513;
+  --ifm-color-secondary: #AD00D8;
+  --ifm-color-secondary-light: #ECA1FF;
+  --ifm-color-secondary-lighter: #eeb1ff;
+  --ifm-color-secondary-lightest: #efc6ff;
+  --ifm-color-secondary-dark: #8900AB;
+  --ifm-color-secondary-darker: #74008d;
+  --ifm-color-secondary-darkest: #4d0062;
 }
 
 .docusaurus-highlight-code-line {
@@ -36,4 +53,96 @@
 
 [data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
+}
+
+.table-of-contents {
+  padding-left: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.table-of-contents>li {
+  margin-left: -2px;
+}
+
+.table-of-contents>li>ul>li>a {
+  margin-left: calc(-2 * var(--ifm-toc-padding-horizontal));
+  padding-left: calc(3 * var(--ifm-toc-padding-horizontal));
+  margin-right: calc(-1 * var(--ifm-toc-padding-horizontal))
+}
+
+.table-of-contents__left-border {
+  border-left: 2px solid var(--ifm-toc-border-color);
+}
+
+.table-of-contents__link {
+  padding: var(--ifm-toc-padding-horizontal);
+  padding-left: calc(var(--ifm-toc-padding-horizontal) + 2px);
+}
+
+[data-theme="dark"] .table-of-contents__link {
+  color: var(--ifm-color-gray-500);
+}
+
+.table-of-contents__link:hover {
+  color: black;
+}
+
+[data-theme="dark"] .table-of-contents__link:hover {
+  color: white;
+}
+
+[data-theme="dark"] .table-of-contents__link--active {
+  background: var(--ifm-color-primary-darkest);
+  color: var(--ifm-text-primary);
+}
+
+.table-of-contents__link--active {
+  font-weight: bold;
+  padding-left: var(--ifm-toc-padding-horizontal);
+  border-left: 2px solid var(--ifm-color-primary);
+  color: var(--ifm-text-primary);
+  background: var(--ifm-color-primary-lightest);
+}
+
+.theme-doc-sidebar-container {
+  border: none !important;
+}
+
+.menu__list .menu__list-item .menu__link:hover {
+  background: inherit;
+  color: var(--ifm-color-primary);
+}
+
+.menu__list .menu__list-item .menu__link--active {
+  background: inherit;
+}
+
+.menu__link--active {
+  font-weight: bold;
+  color: var(--ifm-color-primary);
+  background: inherit;
+}
+
+@media (min-width: 997px) {
+  main {
+    max-width: var(--ifm-container-width-xl) !important;
+  }
+
+  .main-wrapper > div {
+    justify-content: center;
+  }
+}
+
+.navbar-sidebar--show {
+  backdrop-filter: unset !important;
+}
+
+.navbar {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+[data-theme="dark"] .navbar {
+  background: rgba(0, 31, 27, 0.7);
 }

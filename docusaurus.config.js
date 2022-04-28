@@ -125,6 +125,19 @@ const config = {
                 href: 'https://ratsch0k.github.io'
               }
             ]
+          },
+          {
+            title: 'Legal',
+            items: [
+              {
+                label: 'Imprint',
+                href: '/imprint',
+              },
+              {
+                label: 'Privacy policy',
+                href: '/privacy-policy'
+              }
+            ]
           }
         ],
         copyright: `Copyright © ${new Date().getFullYear()} Simon Kurz`,

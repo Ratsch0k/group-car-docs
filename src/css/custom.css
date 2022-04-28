@@ -20,6 +20,7 @@
   --ifm-color-secondary-dark: #8900AB;
   --ifm-color-secondary-darker: #74008d;
   --ifm-color-secondary-darkest: #4d0062;
+  --ifm-background-surface-color: #f6f6f6;
   --ifm-code-font-size: 95%;
 }
 
@@ -35,6 +36,7 @@
   --ifm-background-color: #001f1b !important;
   --ifm-navbar-background-color: #001f1b;
   --ifm-footer-background-color: #001513;
+  --ifm-background-surface-color: var(--ifm-background-color) !important;
   --ifm-color-secondary: #AD00D8;
   --ifm-color-secondary-light: #ECA1FF;
   --ifm-color-secondary-lighter: #eeb1ff;

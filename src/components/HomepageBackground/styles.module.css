@@ -1,0 +1,41 @@
+@keyframes turning {
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+
+.circle-20 {
+    animation: turning 40s linear infinite;
+}
+
+.circle-30 {
+    animation: turning 60s linear infinite;
+}
+
+
+.circle-wrapper {
+    width: 100%;
+    height: 100%;
+    color: var(--ifm-color-primary);
+    overflow: visible;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+[data-theme="dark"] .circle-wrapper {
+    color: var(--ifm-color-primary-darker);
+}
+
+.circle-wrapper > * {
+    grid-area: 1 / 1;
+}
+
+
+.background {
+    position: absolute;
+    overflow: hidden;
+    margin-top: calc(-1 * var(--ifm-navbar-height));
+    min-height: 100%;
+    width: 100%;
+}

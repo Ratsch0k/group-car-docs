@@ -127,7 +127,7 @@ const config = {
             ]
           }
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Simon Kurz, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Simon Kurz`,
       },
       prism: {
         theme: lightCodeTheme,

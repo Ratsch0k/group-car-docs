@@ -1,0 +1,12 @@
+.links {
+    display: flex;
+    flex-direction: column;
+    margin-top: 4rem;
+    font-weight: bolder;
+    align-items: center;
+}
+
+.links > * {
+    margin-bottom: 1rem;
+    color: var(--ifm-color-primary-contrast)
+}

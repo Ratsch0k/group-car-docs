@@ -1,70 +1,54 @@
 import React from 'react';
-import clsx from 'clsx';
 import styles from './styles.module.css';
 
-type FeatureItem = {
+type Feature = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
-  description: JSX.Element;
-};
+  description: string;
+}
 
-const FeatureList: FeatureItem[] = [
+const featureList: Feature[] = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
-    description: (
-      <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
-      </>
-    ),
+    title: 'Groups',
+    description: 'Create a group with your family or friends to share one or more cars together. ' +
+      'Give your group a name, invite friends, and manage your cars. '
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
-    description: (
-      <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
-      </>
-    ),
+    title: 'Parked location',
+    description: 'Let others easily know where you parked. Select the location on the map and your friends can see ' +
+      'its new location on the map.',
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
-    description: (
-      <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
-      </>
-    ),
+    title: 'View available cars',
+    description: 'Check if the car you want to use is available and indicate for others that you\'re using it.'
+  },
+  {
+    title: 'Live Updates',
+    description: 'All important updates, like someone starting to use a car or parking it somewhere, are ' +
+      'immediately visible.'
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({feature}: {feature: Feature}) {
+  const {title, description} = feature;
+
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+    <div className={styles['feature-container']}>
+      <div className={styles['feature-title']}>
+        <b>{title}</b>
       </div>
-      <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
-        <p>{description}</p>
-      </div>
+      {description}
     </div>
   );
 }
 
-export default function HomepageFeatures(): JSX.Element {
+export default function HomepageFeatures() {
   return (
-    <section className={styles.features}>
-      <div className="container">
-        <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+    <div className={styles['feature-list']}>
+      {
+        featureList.map((feature, index) => {
+          return <Feature key={`feature-${index}`} feature={feature}/>;
+        })
+      }
+    </div>
+  )
 }

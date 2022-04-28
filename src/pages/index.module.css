@@ -70,6 +70,9 @@
   color: var(--ifm-color-primary-lightest);
 }
 
+.logo-rest {
+  margin-left: -0.5rem;
+}
 
 .header {
   margin-bottom: 2rem;

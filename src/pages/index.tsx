@@ -1,15 +1,11 @@
 import React from 'react';
 import clsx from 'clsx';
 import Layout from '@theme/Layout';
-import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
 import Logo from '@site/static/img/logo-large.svg';
 import HomepageLinks from "@site/src/components/HomepageLinks";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
-
-
-
 
 
 function HomepageHeader() {
@@ -23,7 +19,9 @@ function HomepageHeader() {
               <div className={styles.logo}>
                 <Logo/>
               </div>
-              {siteConfig.title.substring(1)}
+              <div className={styles['logo-rest']}>
+                {siteConfig.title.substring(1)}
+              </div>
             </h1>
             <p className={clsx("hero__subtitle", styles.description)}>{siteConfig.tagline}</p>
           </div>

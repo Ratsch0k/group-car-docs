@@ -45,6 +45,6 @@
   }
 
   .feature-container {
-    width: min(45vw, 600px)
+    width: min(45vw, 600px);
   }
 }

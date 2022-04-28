@@ -14,18 +14,16 @@ const featureList: Feature[] = [
   },
   {
     title: 'Parked location',
-    description: 'Let others easily know where you parked. No more confusion when the car you thought you' +
-      ' parked last, is suddenly not where though it was. View on the map where exactly the car is parked' +
-      'or if someone is currently using it.'
+    description: 'Let others easily know where you parked. Select the location on the map and your friends can see ' +
+      'its new location on the map.',
   },
   {
     title: 'View available cars',
-    description: 'Instead of asking around if someone is using the car, you can just easily view if the' +
-      'car you want to use is available.'
+    description: 'Check if the car you want to use is available and indicate for others that you\'re using it.'
   },
   {
     title: 'Live Updates',
-    description: 'All important updates, like someone starts using a car or parked it somewhere, are ' +
+    description: 'All important updates, like someone starting to use a car or parking it somewhere, are ' +
       'immediately visible.'
   },
 ];

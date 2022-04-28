@@ -47,8 +47,8 @@ export default function HomepageFeatures() {
   return (
     <div className={styles['feature-list']}>
       {
-        featureList.map((feature) => {
-          return <Feature feature={feature}/>;
+        featureList.map((feature, index) => {
+          return <Feature key={`feature-${index}`} feature={feature}/>;
         })
       }
     </div>

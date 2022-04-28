@@ -6,6 +6,7 @@ import styles from './index.module.css';
 import Logo from '@site/static/img/logo-large.svg';
 import HomepageLinks from "@site/src/components/HomepageLinks";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
+import HomepageBackground from "@site/src/components/HomepageBackground";
 
 
 function HomepageHeader() {
@@ -47,9 +48,9 @@ export default function Home(): JSX.Element {
       title='Documentation'
       description='Documentation for the website my-group-car.de'>
       <div className={styles.root}>
+        <HomepageBackground />
         <HomepageHeader />
       </div>
-
     </Layout>
   );
 }

@@ -1,11 +1,11 @@
 .feature-container {
   border-radius: 12px;
-  padding: 0.5rem;
+  padding: 1rem;
   background: #ffffffc0;
   min-height: 8rem;
   width: min(80vw, 600px);
   text-align: start;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(8px);
   color: var(--ifm-color-emphasis-800);
   border: 1px solid var(--ifm-color-emphasis-300);
 }
@@ -19,6 +19,12 @@
 
 .feature-title {
   text-align: start;
+  color: var(--ifm-color-primary-dark);
+  font-size: var(--ifm-h3-font-size);
+}
+
+[data-theme="dark"] .feature-title {
+  color: var(--ifm-color-white);
 }
 
 .feature-list {
@@ -39,7 +45,6 @@
   }
 
   .feature-container {
-    padding: 1rem;
     width: min(45vw, 600px)
   }
 }

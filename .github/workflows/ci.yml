@@ -1,0 +1,39 @@
+name: Deploy new version
+on:
+  release:
+    types:
+      - published
+jobs:
+  build:
+    name: Test build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - run: yarn install
+      - name: Building
+        run: yarn build
+  deploy:
+    name: Deploy new version
+    needs:
+      - build
+    runs-on: ubuntu-latest
+    env:
+      SSH_KEY: ${{secrets.SSH_KEY}}
+      SSH_KNOWN_HOSTS: ${{secrets.SSH_KNOWN_HOSTS}}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - run: yarn install
+      - name: Building
+        run: yarn build
+      - name: Configure ssh
+        run: bash scripts/configure_ssh.sh
+      - name: Push build webpage to server
+        run: rsync -avh --delete ./build/ ${{secrets.REMOTE_USER}}@my-group-car.de:${{secrets.REMOTE_PATH}}

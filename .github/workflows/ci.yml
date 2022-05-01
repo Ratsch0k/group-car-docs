@@ -1,0 +1,32 @@
+name: Deploy new version
+on:
+  release:
+    types:
+      - published
+jobs:
+  build:
+    name: Test build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - run: yarn install
+      - name: Building
+        run: yarn build
+  deploy:
+    name: Deploy new version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - run: yarn install
+      - name: Building
+        run: yarn build
+      - name: Push built webpage to server
+        run: rsync -avh -e "ssh -l ${secret.REMOTE_USER}" --delete ./build/ docs.my-group-car.de:${secrets.REMOTE_PATH}

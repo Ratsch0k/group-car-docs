@@ -34,6 +34,6 @@ jobs:
       - name: Building
         run: yarn build
       - name: Configure ssh
-        run: bash scripts/configure_ssh_sh
+        run: bash scripts/configure_ssh.sh
       - name: Push built webpage to server
         run: rsync -avh -e "ssh -l ${secret.REMOTE_USER}" --delete ./build/ docs.my-group-car.de:${secrets.REMOTE_PATH}

@@ -1,4 +1,3 @@
-// @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
 const lightCodeTheme = require('prism-react-renderer/themes/github');
@@ -25,6 +24,9 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl: 'https://github.com/Ratsch0k/group-car-docs/tree/main/',
+          remarkPlugins: [
+              require('mdx-mermaid'),
+          ]
         },
         /* Blog is not used for now
         blog: {
@@ -39,6 +41,17 @@ const config = {
         },
       }),
     ],
+    [
+      'redocusaurus',
+      {
+        specs: [
+          {
+            spec: 'https://my-group-car.de/doc/openapi/openapi.yaml',
+            route: '/api/',
+          }
+        ]
+      }
+    ]
   ],
 
   themeConfig:
@@ -51,6 +64,11 @@ const config = {
           src: 'img/logo.svg',
         },
         items: [
+          {
+            href: '/api',
+            label: 'API',
+            position: 'right',
+          },
           {
             type: 'doc',
             docId: 'intro',

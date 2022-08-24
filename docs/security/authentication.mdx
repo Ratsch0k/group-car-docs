@@ -333,3 +333,153 @@ sequenceDiagram
         Server->>Client: Return webpage with the session
     end
 ```
+
+## Entire authentication process
+The following graph shows the entire authentication process from the moment the user visits the webpage to the moment the user is logged in or their log in is rejected and the clients knows the authentication state.
+
+```mermaid
+flowchart TD
+    Start(User requests website) --> check_initial_session
+
+    check_initial_session{"Server checks if client
+    has valid session"}
+
+    check_initial_session -- Valid session --> check_session_exists
+    check_initial_session -- No session --> create_pre_session
+    check_initial_session -- Pre_session --> get_pre_session_csrf_token
+
+    check_session_exists{"Server checks if
+    session exists"}
+    check_session_exists -- Exists --> load_session
+    check_session_exists -- Non-existing --> create_pre_session
+
+    load_session(Server loads session data)
+    load_session --> check_session_expired
+
+    check_session_expired{"Server checks if
+    session has expired"}
+    check_session_expired -- Not expired --> detect_session_anomaly
+    check_session_expired -- "Expired
+    Delete session" --> create_pre_session
+
+    detect_session_anomaly{"Check if client
+    characteristics bound
+    to session match
+    requesting client"}
+    detect_session_anomaly -- No anomaly --> get_csrf_token
+    detect_session_anomaly -- "Anomaly
+    Delete session" --> create_pre_session
+
+    get_csrf_token(Client gets csrf token of their session)
+    get_csrf_token -- Auth check will succeed --> check_auth
+
+    create_pre_session("Server creates pre-session and csrf token,
+    attaches to response")
+    create_pre_session --> get_pre_session_csrf_token
+
+    get_pre_session_csrf_token("Client gets csrf token
+    of it's pre-session")
+    get_pre_session_csrf_token -- Auth check will fail --> check_auth
+
+    check_auth{"Client checks
+    if it's logged in"}
+    check_auth -- Client has session --> user_logged_in
+    check_auth -- Client has pre-session --> user_not_logged_in
+
+    user_logged_in(User is logged in)
+    user_logged_in --> stop_logged_in
+
+    stop_logged_in{{"Stop of authentication flow"}}
+
+    user_not_logged_in(User is not logged int)
+    user_not_logged_in --> user_authenticates
+
+    user_authenticates{"User wants to
+    authenticate"}
+    user_authenticates --> sign_up
+    user_authenticates --> log_in
+
+    sign_up("User wants to create a new account.
+    Client sends sign-up request")
+    sign_up --> check_username_and_password
+
+    check_username_and_password{"Server checks if username
+    or email already used"}
+    check_username_and_password -- Either one already used --> sign_up
+    check_username_and_password -- Neither is used --> create_pending_user
+
+    create_pending_user(Server creates pending user account)
+    create_pending_user --> send_confirmation_email
+
+    send_confirmation_email("Server sends OTP
+    to email address
+    of user")
+    send_confirmation_email --> prompt_confirmation
+
+    prompt_confirmation("Server prompts client
+    to enter OTP of
+    confirmation email")
+    prompt_confirmation --> client_enters_confirmation
+
+    client_enters_confirmation{"Client sends the
+    confirmation code"}
+    client_enters_confirmation -- Is correct --> authenticates
+    client_enters_confirmation -- Is incorrect --> is_limit
+
+    is_limit{"Server checks if client
+    has exceeded limit"}
+    is_limit -- Has exceeded --> ban_client_sign_up
+    is_limit -- Has tries left --> shows_confirmation_error
+
+    ban_client_sign_up{{"Server bans client's
+    IP temporarily"}}
+
+    shows_confirmation_error("Client shows that
+    code was incorrect")
+    shows_confirmation_error --> prompt_confirmation
+
+
+    authenticates{"Was user signing up
+    or logging in"}
+    authenticates -- Signing up --> create_account
+    authenticates -- Logging in --> create_session
+
+    create_account("Server creates new account
+    from pending account")
+    create_account --> create_session
+
+    create_session("Server creates session
+    and csrf token, attaches to response")
+
+    create_session --> user_logged_in
+
+    log_in("User wants to log in
+    Client sends log in request")
+    log_in --> check_credentials
+
+    check_credentials{"Server checks
+    credentials"}
+    check_credentials -- Correct --> detect_login_anomaly
+    check_credentials -- Incorrect --> check_login_limit
+
+    check_login_limit{"Server checks if
+    client has exceeded
+    limit of log ins"}
+    check_login_limit -- Exceeded --> ban_client_log_in
+    check_login_limit -- Tries left --> log_in
+
+    ban_client_log_in{{"Server bans client
+    IP temporarily"}}
+
+    detect_login_anomaly("Server tries to detect
+    log in anomaly")
+    detect_login_anomaly --> check_for_known_device
+
+    check_for_known_device{"Server checks
+    if user has ever
+    used that client"}
+    check_for_known_device -- Never used --> send_confirmation_email
+    check_for_known_device -- Has used --> create_session
+
+
+```
